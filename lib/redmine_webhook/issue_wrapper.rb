@@ -22,6 +22,7 @@ module RedmineWebhook
         :lock_version => @issue.lock_version,
         :custom_field_values => @issue.custom_field_values.collect { |value| RedmineWebhook::CustomFieldValueWrapper.new(value).to_hash },
         :project => RedmineWebhook::ProjectWrapper.new(@issue.project).to_hash,
+        :fixed_version => RedmineWebhook::VersionWrapper.new(@issue.fixed_version).to_hash,
         :status => RedmineWebhook::StatusWrapper.new(@issue.status).to_hash,
         :tracker => RedmineWebhook::TrackerWrapper.new(@issue.tracker).to_hash,
         :priority => RedmineWebhook::PriorityWrapper.new(@issue.priority).to_hash,
